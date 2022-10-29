@@ -23,12 +23,6 @@
       }
     ]
   },
-  "browserslist": [
-    "> 1%",
-    "not IE <= 11",
-    "not OperaMini all",
-    "not dead"
-  ],
   "dependencies": {
     "ssestream": "^1.1.0"
   },
