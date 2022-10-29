@@ -65,31 +65,8 @@ module.exports = {
     path: path.resolve('build'),
     publicPath: '/',
   },
-  resolve: {
-    alias: {
-      react: 'preact/compat',
-      'react-dom': 'preact/compat',
-    },
-    symlinks: false,
-  },
-  module: {
-    strictExportPresence: true,
-    rules: [
-      {
-        test: /\.js$/,
-        include: path.resolve('src'),
-        loader: require.resolve('babel-loader'),
-        options: {
-          envName: 'development',
-          plugins: ['@prefresh/babel-plugin'].filter(Boolean),
-        },
-      },
-      { test: /\.js$/, use: require.resolve('source-map-loader') },
-    ],
-  },
   plugins: (process.stdout.isTTY ? [new webpack.ProgressPlugin()] : []).concat([
     new BrowserHmrPlugin(8000),
-    new (require('@prefresh/webpack'))(),
     new HtmlWebpackPlugin(),
   ]),
 };

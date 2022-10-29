@@ -1,8 +1,14 @@
 /* eslint-env browser */
-import 'preact/debug';
+import { render } from './render';
 
-import { render } from 'preact';
+import.meta.webpackHot.accept('./render');
 
-import { App } from './app';
+let counter = 0;
 
-render(<App />, document.body);
+const div = document.createElement('div');
+div.innerText = render(counter);
+document.body.appendChild(div);
+
+setInterval(() => {
+  div.innerText = render(++counter);
+}, 1000);
