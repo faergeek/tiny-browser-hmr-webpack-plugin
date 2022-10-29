@@ -46,11 +46,28 @@ class BrowserHmrPlugin {
       });
     });
 
-    compiler.hooks.entryOption.tap(this.constructor.name, (context, entry) => {
+    compiler.hooks.entryOption.tap(this.constructor.name, (_context, entry) => {
       Object.values(entry).forEach(entryValue => {
-        entryValue.import.unshift(
-          `${require.resolve('./hmr/browser')}?${this.port}`
-        );
+        const hmrIndex = entryValue.import.findIndex(resourcePath => {
+          try {
+            return (
+              require.resolve(resourcePath.split('?')[0]) ===
+              require.resolve('./hmr/browser')
+            );
+          } catch {
+            return false;
+          }
+        });
+
+        if (hmrIndex !== -1) {
+          const entryPath = entryValue.import[hmrIndex];
+          const [pathname, search] = entryPath.split('?');
+
+          const searchParams = new URLSearchParams(search);
+          searchParams.set('port', this.port);
+
+          entryValue.import[hmrIndex] = `${pathname}?${searchParams}`;
+        }
       });
     });
   }
@@ -58,7 +75,7 @@ class BrowserHmrPlugin {
 
 export default {
   mode: 'development',
-  entry: './src',
+  entry: ['./hmr/browser', './src'],
   stats: 'errors-warnings',
   devtool: 'cheap-module-source-map',
   output: {
