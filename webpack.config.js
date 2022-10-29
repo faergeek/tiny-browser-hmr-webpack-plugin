@@ -18,7 +18,7 @@ class BrowserHmrPlugin {
     let latestHash;
     const streams = [];
 
-    createServer(async (req, res) => {
+    createServer((req, res) => {
       const stream = new SseStream.default(req);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
