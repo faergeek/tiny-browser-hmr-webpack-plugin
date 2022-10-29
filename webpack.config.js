@@ -5,7 +5,6 @@ const path = require('path');
 const { default: SseStream } = require('ssestream');
 const { pipeline } = require('stream');
 const webpack = require('webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const SIGNALS_ARE_SUPPORTED = process.platform !== 'win32';
 
@@ -313,24 +312,6 @@ async function makeWebpackConfig({
         new AssetsPlugin(path.join(paths.build, 'webpack-assets.json')),
       ]
         .concat(process.stdout.isTTY ? [new webpack.ProgressPlugin()] : [])
-        .concat(
-          analyze
-            ? [
-                new BundleAnalyzerPlugin({
-                  analyzerHost: 'localhost',
-                  analyzerMode: watch ? 'server' : 'static',
-                  analyzerPort,
-                  defaultSizes: 'gzip',
-                  openAnalyzer: false,
-                  reportFilename: path.join(
-                    paths.build,
-                    'webpack-bundle-analyzer.html'
-                  ),
-                  statsFilename: path.join(paths.build, 'stats.json'),
-                }),
-              ]
-            : []
-        )
         .concat(
           watch && dev
             ? [
