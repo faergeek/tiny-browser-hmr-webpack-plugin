@@ -177,18 +177,6 @@ async function makeWebpackConfig({
             : []
         )
         .concat(new HtmlWebpackPlugin()),
-      optimization: {
-        splitChunks: {
-          cacheGroups: {
-            vendors: {
-              test: /[\\/]node_modules[\\/]/,
-              chunks: 'initial',
-              name: (module, chunks, cacheGroupKey) =>
-                `${cacheGroupKey}-${chunks.map(chunk => chunk.name).join('&')}`,
-            },
-          },
-        },
-      },
     }),
   ];
 }
