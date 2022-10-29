@@ -12,37 +12,6 @@ export class TinyBrowserHmrWebpackPlugin {
   }
 
   apply(compiler) {
-    let latestHash;
-    const streams = [];
-
-    createServer((req, res) => {
-      const stream = new SseStream.default(req);
-
-      res.setHeader('Access-Control-Allow-Origin', '*');
-
-      pipeline(stream, res, () => {
-        res.end();
-        const index = streams.indexOf(stream);
-        if (index !== -1) {
-          streams.splice(index, 1);
-        }
-      });
-
-      streams.push(stream);
-
-      if (latestHash) {
-        stream.write({ event: 'check', data: latestHash });
-      }
-    }).listen(this.port);
-
-    compiler.hooks.done.tap(this.constructor.name, stats => {
-      latestHash = stats.hash;
-
-      streams.forEach(stream => {
-        stream.write({ event: 'check', data: latestHash });
-      });
-    });
-
     compiler.hooks.entryOption.tap(this.constructor.name, (_context, entry) => {
       let foundClientEntry = false;
 
@@ -76,5 +45,37 @@ export class TinyBrowserHmrWebpackPlugin {
         );
       }
     });
+
+    let latestHash;
+    const streams = [];
+
+    compiler.hooks.done.tap(this.constructor.name, stats => {
+      latestHash = stats.hash;
+
+      streams.forEach(stream => {
+        stream.write({ event: 'check', data: latestHash });
+      });
+    });
+
+    createServer((req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
+      const stream = new SseStream.default(req);
+      streams.push(stream);
+
+      pipeline(stream, res, () => {
+        const index = streams.indexOf(stream);
+
+        if (index !== -1) {
+          streams.splice(index, 1);
+        }
+
+        res.end();
+      });
+
+      if (latestHash) {
+        stream.writeMessage({ event: 'check', data: latestHash });
+      }
+    }).listen(this.port);
   }
 }
