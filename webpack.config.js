@@ -15,8 +15,6 @@ class BrowserHmrPlugin {
   }
 
   apply(compiler) {
-    new webpack.HotModuleReplacementPlugin().apply(compiler);
-
     let latestHash;
     const streams = [];
 
@@ -69,8 +67,10 @@ export default {
     path: path.resolve('build'),
     publicPath: '/',
   },
-  plugins: (process.stdout.isTTY ? [new webpack.ProgressPlugin()] : []).concat([
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new BrowserHmrPlugin(8000),
     new HtmlWebpackPlugin(),
-  ]),
+  ],
 };
