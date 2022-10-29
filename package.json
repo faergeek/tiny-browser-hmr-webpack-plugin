@@ -46,22 +46,6 @@
     "not OperaMini all",
     "not dead"
   ],
-  "size-limit": [
-    {
-      "name": "css",
-      "path": "build/public/*.css",
-      "limit": 1003
-    },
-    {
-      "name": "js",
-      "path": [
-        "build/public/*.js",
-        "!build/public/hot.js",
-        "!**/*.hot-update.js"
-      ],
-      "limit": 4141
-    }
-  ],
   "dependencies": {
     "@babel/runtime": "^7.7.4",
     "compression": "^1.7.4",
@@ -82,7 +66,6 @@
     "@prefresh/babel-plugin": "^0.4.4",
     "@prefresh/core": "^1.4.1",
     "@prefresh/webpack": "^3.3.4",
-    "@size-limit/preset-app": "^8.0.0",
     "@types/compression": "^1.7.0",
     "@types/express": "^4.17.12",
     "babel-loader": "^9.0.0",
@@ -98,7 +81,6 @@
     "postcss-preset-env": "^7.0.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.0",
-    "size-limit": "^8.0.0",
     "source-map-loader": "^4.0.1",
     "ssestream": "^1.1.0",
     "typescript": "^4.3.2",
