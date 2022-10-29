@@ -134,7 +134,6 @@ async function makeWebpackConfig({
   define,
   dev,
   entry,
-  extractRuntimeChunk,
   paths,
   port = 8000,
   prefresh,
@@ -179,9 +178,6 @@ async function makeWebpackConfig({
         )
         .concat(new HtmlWebpackPlugin()),
       optimization: {
-        runtimeChunk: extractRuntimeChunk
-          ? { name: entrypoint => `runtime-${entrypoint.name}` }
-          : undefined,
         splitChunks: {
           cacheGroups: {
             vendors: {
