@@ -103,7 +103,7 @@ class NodeHmrPlugin {
     compiler.hooks.entryOption.tap(this.constructor.name, (context, entry) => {
       Object.values(entry).forEach(entryValue => {
         entryValue.import.unshift(
-          `@faergeek/make-webpack-config/hmr/node${
+          `${require.resolve('./hmr/node')}${
             SIGNALS_ARE_SUPPORTED ? '' : '?poll=1000'
           }`
         );
@@ -154,7 +154,7 @@ class BrowserHmrPlugin {
     compiler.hooks.entryOption.tap(this.constructor.name, (context, entry) => {
       Object.values(entry).forEach(entryValue => {
         entryValue.import.unshift(
-          `@faergeek/make-webpack-config/hmr/browser?${this.port}`
+          `${require.resolve('./hmr/browser')}?${this.port}`
         );
       });
     });
