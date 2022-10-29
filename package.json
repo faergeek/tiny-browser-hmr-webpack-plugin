@@ -1,6 +1,21 @@
 {
   "type": "module",
   "private": true,
+  "module": "plugin.js",
+  "exports": {
+    ".": {
+      "import": "./plugin.js",
+      "require": null
+    },
+    "./client": {
+      "import": "./client.js",
+      "require": null
+    }
+  },
+  "files": [
+    "client.js",
+    "plugin.js"
+  ],
   "scripts": {
     "cleanup": "rimraf build",
     "prettier": "prettier --write .",
