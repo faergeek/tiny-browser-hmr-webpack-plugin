@@ -232,7 +232,7 @@ function makeConfig({
           options: babelLoaderOptions,
         },
         {
-          test: /\.(css|sass|scss)$/,
+          test: /\.css$/,
           use: (emitAssets ? [MiniCssExtractPlugin.loader] : []).concat([
             {
               loader: require.resolve('css-loader'),
@@ -254,21 +254,6 @@ function makeConfig({
           ]),
         },
         { test: /\.(css|js)$/, use: require.resolve('source-map-loader') },
-        {
-          test: /\.(sass|scss)$/,
-          use: [
-            {
-              loader: require.resolve('resolve-url-loader'),
-              options: { sourceMap: true },
-            },
-            {
-              loader: require.resolve('sass-loader'),
-              options: {
-                implementation: require('node-sass'),
-              },
-            },
-          ],
-        },
         {
           test: /\.svg$/,
           type: 'asset',
