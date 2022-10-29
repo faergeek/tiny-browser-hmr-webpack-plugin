@@ -44,6 +44,8 @@ export class TinyBrowserHmrWebpackPlugin {
     });
 
     compiler.hooks.entryOption.tap(this.constructor.name, (_context, entry) => {
+      let foundClientEntry = false;
+
       Object.values(entry).forEach(entryValue => {
         const clientIndex = entryValue.import.findIndex(resourcePath => {
           try {
@@ -57,6 +59,7 @@ export class TinyBrowserHmrWebpackPlugin {
         });
 
         if (clientIndex !== -1) {
+          foundClientEntry = true;
           const entryPath = entryValue.import[clientIndex];
           const [pathname, search] = entryPath.split('?');
 
@@ -66,6 +69,12 @@ export class TinyBrowserHmrWebpackPlugin {
           entryValue.import[clientIndex] = `${pathname}?${searchParams}`;
         }
       });
+
+      if (!foundClientEntry) {
+        throw new Error(
+          'TinyBrowserHmrWebpackPlugin is used without adding an entry. Either remove a plugin or add an entry'
+        );
+      }
     });
   }
 }

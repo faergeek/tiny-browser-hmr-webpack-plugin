@@ -22,7 +22,7 @@ if (import.meta.webpackHot) {
 
   if (!port) {
     throw new Error(
-      'HMR client is used without a plugin. Either remove an entry or add a plugin'
+      'TinyBrowserHmrWebpackPlugin client entry is used without a plugin. Either remove an entry or add a plugin'
     );
   }
 
