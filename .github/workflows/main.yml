@@ -1,6 +1,8 @@
 name: Checks
 on:
-  push: [branches]
+  push:
+    branches:
+      - '**'
 jobs:
   build:
     runs-on: ubuntu-latest
