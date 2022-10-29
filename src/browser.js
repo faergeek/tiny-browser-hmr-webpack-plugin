@@ -1,3 +1,5 @@
+/* eslint-env browser */
+/* globals __DEV__ */
 __DEV__ && require('preact/debug');
 import { hydrate } from 'preact';
 

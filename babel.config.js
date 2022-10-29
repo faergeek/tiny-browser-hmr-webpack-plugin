@@ -17,7 +17,6 @@ module.exports = api => ({
         runtime: 'automatic',
       },
     ],
-    '@babel/typescript',
   ],
   plugins: [
     [

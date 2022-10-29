@@ -5,7 +5,6 @@
     "prettier": "prettier --write .",
     "prettier:check": "prettier --list-different .",
     "lint": "eslint --max-warnings 0 .",
-    "typecheck": "tsc",
     "dev": "webpack watch --node-env=development",
     "build": "webpack --node-env=production",
     "build:analyze": "webpack watch --node-env=production",
@@ -27,10 +26,6 @@
       {
         "files": "src/**/*",
         "extends": "@faergeek/eslint-config/preact"
-      },
-      {
-        "files": "**/*.ts?(x)",
-        "extends": "@faergeek/eslint-config/typescript"
       }
     ]
   },
@@ -55,13 +50,10 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.13.0",
     "@faergeek/eslint-config": "^5.0.0",
     "@prefresh/babel-plugin": "^0.4.4",
     "@prefresh/core": "^1.4.1",
     "@prefresh/webpack": "^3.3.4",
-    "@types/compression": "^1.7.0",
-    "@types/express": "^4.17.12",
     "babel-loader": "^9.0.0",
     "browserslist": "^4.16.6",
     "eslint": "^8.0.0",
@@ -69,7 +61,6 @@
     "rimraf": "^3.0.0",
     "source-map-loader": "^4.0.1",
     "ssestream": "^1.1.0",
-    "typescript": "^4.3.2",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.9.1"
   }

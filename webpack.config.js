@@ -211,7 +211,6 @@ function makeConfig({
     },
     resolve: {
       alias,
-      extensions: ['.js', '.ts', '.tsx'],
       modules: ['node_modules', srcPath],
       symlinks: false,
     },
@@ -219,7 +218,7 @@ function makeConfig({
       strictExportPresence: true,
       rules: [
         {
-          test: /\.(js|tsx?)$/,
+          test: /\.js$/,
           include: srcPath,
           loader: require.resolve('babel-loader'),
           options: babelLoaderOptions,

@@ -17,7 +17,7 @@ export const requestHandler = express()
   )
   .get('/', async (_req, res, next) => {
     try {
-      const { main }: { main: { js: string[] } } = JSON.parse(
+      const { main } = JSON.parse(
         await readFile(path.resolve(__dirname, 'webpack-assets.json'), 'utf-8')
       );
 
