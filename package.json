@@ -1,15 +1,13 @@
 {
   "private": true,
-  "main": "build/main.js",
   "scripts": {
+    "cleanup": "rimraf build",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --list-different .",
     "lint": "eslint --max-warnings 0 .",
     "dev": "webpack watch --node-env=development",
     "build": "webpack --node-env=production",
-    "build:analyze": "webpack watch --node-env=production",
-    "cleanup": "rimraf build",
-    "start": "node --enable-source-maps ."
+    "start": "http-server build -c-1 -a localhost"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -35,28 +33,25 @@
     "not OperaMini all",
     "not dead"
   ],
-  "dependencies": {
-    "@babel/runtime": "^7.7.4",
-    "compression": "^1.7.4",
-    "core-js": "^3.2.1",
-    "dotenv-flow": "^3.2.0",
-    "express": "^4.17.1",
-    "preact": "^10.5.13",
-    "preact-render-to-string": "^5.1.19",
-    "tiny-invariant": "^1.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.7.4",
     "@faergeek/eslint-config": "^5.0.0",
     "@prefresh/babel-plugin": "^0.4.4",
     "@prefresh/core": "^1.4.1",
     "@prefresh/webpack": "^3.3.4",
     "babel-loader": "^9.0.0",
     "browserslist": "^4.16.6",
+    "core-js": "^3.2.1",
     "eslint": "^8.0.0",
+    "express": "^4.18.2",
+    "html-webpack-plugin": "^5.5.0",
+    "http-server": "^14.1.1",
+    "preact": "^10.5.13",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.0",
     "source-map-loader": "^4.0.1",

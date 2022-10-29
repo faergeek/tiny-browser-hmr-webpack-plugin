@@ -1,110 +1,9 @@
-const { spawn } = require('child_process');
-const { mkdir, writeFile } = require('fs/promises');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { createServer } = require('http');
 const path = require('path');
 const { default: SseStream } = require('ssestream');
 const { pipeline } = require('stream');
 const webpack = require('webpack');
-
-const SIGNALS_ARE_SUPPORTED = process.platform !== 'win32';
-
-class AssetsPlugin {
-  constructor(filename) {
-    this.filename = filename;
-  }
-
-  apply(compiler) {
-    compiler.hooks.done.tapPromise({ name: 'AssetsPlugin' }, async stats => {
-      const { assets, entrypoints, publicPath } = stats.toJson({
-        all: false,
-        assets: true,
-        cachedAssets: true,
-        entrypoints: true,
-        publicPath: true,
-      });
-
-      const nonHmrAssetsIndex = Object.fromEntries(
-        assets
-          .filter(
-            asset => asset.type === 'asset' && !asset.info.hotModuleReplacement
-          )
-          .map(asset => [asset.name, asset])
-      );
-
-      const assetsByEntrypoint = Object.fromEntries(
-        Object.values(entrypoints).map(entrypoint => [
-          entrypoint.name,
-          entrypoint.assets
-            .map(asset => nonHmrAssetsIndex[asset.name])
-            .filter(Boolean)
-            .reduce(
-              (result, asset) => {
-                const ext = path.extname(asset.name).slice(1);
-
-                if (result[ext]) {
-                  result[ext].push(
-                    publicPath === 'auto' ? asset.name : publicPath + asset.name
-                  );
-                }
-
-                return result;
-              },
-              {
-                js: [],
-              }
-            ),
-        ])
-      );
-
-      await mkdir(path.dirname(this.filename), { recursive: true });
-
-      await writeFile(
-        this.filename,
-        JSON.stringify(assetsByEntrypoint, null, 2)
-      );
-    });
-  }
-}
-
-class NodeHmrPlugin {
-  constructor(filename) {
-    this.child = null;
-    this.path = filename;
-  }
-
-  apply(compiler) {
-    new webpack.HotModuleReplacementPlugin().apply(compiler);
-
-    compiler.hooks.done.tap(this.constructor.name, () => {
-      if (this.child) {
-        if (SIGNALS_ARE_SUPPORTED) {
-          process.kill(this.child.pid, 'SIGUSR2');
-        }
-        return;
-      }
-
-      this.child = spawn(
-        'node',
-        ['--enable-source-maps', '--inspect=9229', this.path],
-        { stdio: 'inherit' }
-      );
-
-      this.child.on('close', () => {
-        this.child = null;
-      });
-    });
-
-    compiler.hooks.entryOption.tap(this.constructor.name, (context, entry) => {
-      Object.values(entry).forEach(entryValue => {
-        entryValue.import.unshift(
-          `${require.resolve('./hmr/node')}${
-            SIGNALS_ARE_SUPPORTED ? '' : '?poll=1000'
-          }`
-        );
-      });
-    });
-  }
-}
 
 class BrowserHmrPlugin {
   constructor(port) {
@@ -242,56 +141,17 @@ async function makeWebpackConfig({
   reactRefresh,
   watch,
 }) {
-  const pkg = require('./package.json');
-
   const env = dev ? 'development' : 'production';
-
-  const { default: escapeStringRegexp } = await import('escape-string-regexp');
 
   return [
     makeConfig({
       alias,
       cache,
       mode: env,
-      name: 'node',
-      entry: entry.node,
+      name: 'browser',
+      entry,
       srcPath: paths.src,
       outputPath: paths.build,
-      target: 'node',
-      babelLoaderOptions: {
-        envName: env,
-        targets: 'current node',
-      },
-      devtoolModuleFilenameTemplate: path.relative(
-        paths.build,
-        '[resource-path]'
-      ),
-      externals: new RegExp(
-        `^(${Object.keys(pkg.dependencies)
-          .map(escapeStringRegexp)
-          .join('|')})(/|$)`
-      ),
-      externalsType: 'commonjs',
-      plugins: [
-        new webpack.DefinePlugin({
-          ...define,
-          __DEV__: JSON.stringify(dev),
-          __NODE__: JSON.stringify(true),
-        }),
-      ]
-        .concat(process.stdout.isTTY ? [new webpack.ProgressPlugin()] : [])
-        .concat(
-          watch ? [new NodeHmrPlugin(path.join(paths.build, 'main.js'))] : []
-        ),
-    }),
-    makeConfig({
-      alias,
-      cache,
-      mode: env,
-      name: 'browser',
-      entry: entry.browser,
-      srcPath: paths.src,
-      outputPath: paths.public,
       babelLoaderOptions: {
         envName: env,
         plugins: [
@@ -304,9 +164,7 @@ async function makeWebpackConfig({
         new webpack.DefinePlugin({
           ...define,
           __DEV__: JSON.stringify(dev),
-          __NODE__: JSON.stringify(false),
         }),
-        new AssetsPlugin(path.join(paths.build, 'webpack-assets.json')),
       ]
         .concat(process.stdout.isTTY ? [new webpack.ProgressPlugin()] : [])
         .concat(
@@ -318,7 +176,8 @@ async function makeWebpackConfig({
                 prefresh && new (require('@prefresh/webpack'))(),
               ].filter(Boolean)
             : []
-        ),
+        )
+        .concat(new HtmlWebpackPlugin()),
       optimization: {
         runtimeChunk: extractRuntimeChunk
           ? { name: entrypoint => `runtime-${entrypoint.name}` }
@@ -348,13 +207,9 @@ module.exports = (env, argv) => {
       'react-dom': 'preact/compat',
     },
     dev,
-    entry: {
-      browser: './src/browser',
-      node: './src/node',
-    },
+    entry: './src',
     paths: {
       build: path.resolve('build'),
-      public: path.resolve('build', 'public'),
       src: path.resolve('src'),
     },
     prefresh: true,
