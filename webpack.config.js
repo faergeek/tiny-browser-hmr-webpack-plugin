@@ -232,8 +232,6 @@ function makeConfig({
 
 async function makeWebpackConfig({
   alias,
-  analyze,
-  analyzerPort = 8001,
   cache,
   define,
   dev,
@@ -350,7 +348,6 @@ module.exports = (env, argv) => {
       react: 'preact/compat',
       'react-dom': 'preact/compat',
     },
-    analyze: !dev,
     dev,
     entry: {
       browser: './src/browser',
