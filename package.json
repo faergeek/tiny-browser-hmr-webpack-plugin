@@ -9,20 +9,6 @@
     "build": "webpack --node-env=production",
     "start": "http-server build -c-1 -a localhost"
   },
-  "prettier": {
-    "arrowParens": "avoid",
-    "singleQuote": true
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": "@faergeek",
-    "overrides": [
-      {
-        "files": "*",
-        "extends": "@faergeek/eslint-config/node"
-      }
-    ]
-  },
   "dependencies": {
     "ssestream": "^1.1.0"
   },
