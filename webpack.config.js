@@ -1,10 +1,10 @@
 import { createServer } from 'node:http';
 import { createRequire } from 'node:module';
 import * as path from 'node:path';
+import { pipeline } from 'node:stream';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import SseStream from 'ssestream';
-import { pipeline } from 'stream';
 import webpack from 'webpack';
 
 const require = createRequire(import.meta.url);
