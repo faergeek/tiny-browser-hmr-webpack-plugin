@@ -8,7 +8,6 @@
         "^@babel/",
         "^@faergeek/eslint-config",
         "^eslint",
-        "^postcss$",
         "^prettier$",
         "^semantic-release$"
       ]

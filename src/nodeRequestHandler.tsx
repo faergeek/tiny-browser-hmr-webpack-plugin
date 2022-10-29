@@ -17,7 +17,7 @@ export const requestHandler = express()
   )
   .get('/', async (_req, res, next) => {
     try {
-      const { main }: { main: { css: string[]; js: string[] } } = JSON.parse(
+      const { main }: { main: { js: string[] } } = JSON.parse(
         await readFile(path.resolve(__dirname, 'webpack-assets.json'), 'utf-8')
       );
 
@@ -30,9 +30,6 @@ export const requestHandler = express()
               name="viewport"
               content="width=device-width,initial-scale=1"
             />
-            {main.css.map(href => (
-              <link key={href} rel="stylesheet" href={href} />
-            ))}
             {main.js.map(src => (
               <script key={src} defer src={src} />
             ))}

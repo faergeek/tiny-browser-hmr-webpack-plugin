@@ -1,9 +1,6 @@
 const { spawn } = require('child_process');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { mkdir, writeFile } = require('fs/promises');
 const { createServer } = require('http');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const svgToMiniDataURI = require('mini-svg-data-uri');
 const path = require('path');
 const { default: SseStream } = require('ssestream');
 const { pipeline } = require('stream');
@@ -54,7 +51,6 @@ class AssetsPlugin {
                 return result;
               },
               {
-                css: [],
                 js: [],
               }
             ),
@@ -175,7 +171,6 @@ function makeConfig({
   babelLoaderOptions,
   cache,
   devtoolModuleFilenameTemplate,
-  emitAssets,
   entry,
   externals,
   externalsType,
@@ -230,42 +225,7 @@ function makeConfig({
           loader: require.resolve('babel-loader'),
           options: babelLoaderOptions,
         },
-        {
-          test: /\.css$/,
-          use: (emitAssets ? [MiniCssExtractPlugin.loader] : []).concat([
-            {
-              loader: require.resolve('css-loader'),
-              options: {
-                importLoaders: 2,
-                modules: {
-                  auto: true,
-                  namedExport: true,
-                  exportOnlyLocals: !emitAssets,
-                  exportLocalsConvention: 'dashesOnly',
-                  localIdentName:
-                    mode === 'development'
-                      ? '[local]@[name]#[contenthash:base64:5]'
-                      : '[hash:base64]',
-                },
-              },
-            },
-            require.resolve('postcss-loader'),
-          ]),
-        },
-        { test: /\.(css|js)$/, use: require.resolve('source-map-loader') },
-        {
-          test: /\.svg$/,
-          type: 'asset',
-          generator: {
-            emit: emitAssets,
-            dataUrl: content => svgToMiniDataURI(content.toString()),
-          },
-        },
-        {
-          test: /\.(png|gif|jpe?g|ico|eot|otf|ttf|woff2?)$/,
-          type: 'asset/resource',
-          generator: { emit: emitAssets },
-        },
+        { test: /\.js$/, use: require.resolve('source-map-loader') },
       ],
     },
   };
@@ -301,7 +261,6 @@ async function makeWebpackConfig({
       entry: entry.node,
       srcPath: paths.src,
       outputPath: paths.build,
-      emitAssets: false,
       target: 'node',
       babelLoaderOptions: {
         envName: env,
@@ -337,7 +296,6 @@ async function makeWebpackConfig({
       entry: entry.browser,
       srcPath: paths.src,
       outputPath: paths.public,
-      emitAssets: true,
       babelLoaderOptions: {
         envName: env,
         plugins: [
@@ -353,10 +311,6 @@ async function makeWebpackConfig({
           __NODE__: JSON.stringify(false),
         }),
         new AssetsPlugin(path.join(paths.build, 'webpack-assets.json')),
-        new MiniCssExtractPlugin({
-          experimentalUseImportModule: false,
-          filename: watch ? '[name].css' : '[name].[contenthash].css',
-        }),
       ]
         .concat(process.stdout.isTTY ? [new webpack.ProgressPlugin()] : [])
         .concat(
@@ -388,7 +342,6 @@ async function makeWebpackConfig({
             : []
         ),
       optimization: {
-        minimizer: ['...', new CssMinimizerPlugin()],
         runtimeChunk: extractRuntimeChunk
           ? { name: entrypoint => `runtime-${entrypoint.name}` }
           : undefined,
@@ -399,11 +352,6 @@ async function makeWebpackConfig({
               chunks: 'initial',
               name: (module, chunks, cacheGroupKey) =>
                 `${cacheGroupKey}-${chunks.map(chunk => chunk.name).join('&')}`,
-            },
-            css: {
-              type: 'css/mini-extract',
-              name: 'main',
-              chunks: 'async',
             },
           },
         },
