@@ -1,9 +1,13 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { createServer } = require('http');
-const path = require('path');
-const { default: SseStream } = require('ssestream');
-const { pipeline } = require('stream');
-const webpack = require('webpack');
+import { createServer } from 'node:http';
+import { createRequire } from 'node:module';
+import * as path from 'node:path';
+
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import SseStream from 'ssestream';
+import { pipeline } from 'stream';
+import webpack from 'webpack';
+
+const require = createRequire(import.meta.url);
 
 class BrowserHmrPlugin {
   constructor(port) {
@@ -17,7 +21,7 @@ class BrowserHmrPlugin {
     const streams = [];
 
     createServer(async (req, res) => {
-      const stream = new SseStream(req);
+      const stream = new SseStream.default(req);
 
       res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -54,7 +58,7 @@ class BrowserHmrPlugin {
   }
 }
 
-module.exports = {
+export default {
   mode: 'development',
   entry: './src',
   stats: 'errors-warnings',

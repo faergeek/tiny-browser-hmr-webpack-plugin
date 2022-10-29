@@ -1,7 +1,7 @@
 /* eslint-env browser */
-import { render } from './render';
+import { render } from './render.js';
 
-import.meta.webpackHot.accept('./render');
+import.meta.webpackHot.accept('./render.js');
 
 let counter = 0;
 
