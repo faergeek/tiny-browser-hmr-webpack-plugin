@@ -1,6 +1,10 @@
 {
   "type": "module",
-  "private": true,
+  "name": "@faergeek/make-webpack-config",
+  "version": "0.0.0-semantically-released",
+  "repository": "git@github.com:faergeek/make-webpack-config.git",
+  "author": "Sergey Slipchenko <me@faergeek.online>",
+  "license": "MIT",
   "module": "plugin.js",
   "exports": {
     ".": {
@@ -24,6 +28,9 @@
     "dev": "webpack watch --node-env=development",
     "build": "webpack --node-env=production",
     "start": "http-server build -c-1 -a localhost"
+  },
+  "peerDependencies": {
+    "webpack": "^5.74.0"
   },
   "dependencies": {
     "ssestream": "^1.1.0"
