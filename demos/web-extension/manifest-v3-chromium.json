@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "TinyBrowserHmrWebpackPlugin test extension",
+  "version": "0.0.1",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["alarms"],
+  "action": {
+    "default_title": "TinyBrowserHmrWebpackPlugin test extension",
+    "default_popup": "action.html"
+  }
+}
