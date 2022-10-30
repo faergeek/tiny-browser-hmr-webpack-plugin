@@ -28,7 +28,7 @@
     "demo": "node demos/cli.js"
   },
   "peerDependencies": {
-    "webpack": "^5.74.0"
+    "webpack": "^5.30.0"
   },
   "dependencies": {
     "ws": "^8.10.0"
