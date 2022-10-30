@@ -1,8 +1,6 @@
-import { createServer } from 'node:http';
 import { createRequire } from 'node:module';
-import { pipeline } from 'node:stream';
 
-import SseStream from 'ssestream';
+import WebSocket, { WebSocketServer } from 'ws';
 
 const require = createRequire(import.meta.url);
 
@@ -47,35 +45,28 @@ export class TinyBrowserHmrWebpackPlugin {
     });
 
     let latestHash;
-    const streams = [];
+    const wss = new WebSocketServer({ port: this.port });
+
+    function sendCheck(client) {
+      if (!latestHash) {
+        return;
+      }
+
+      client.send(JSON.stringify({ hash: latestHash }));
+    }
+
+    wss.on('connection', client => {
+      sendCheck(client);
+    });
 
     compiler.hooks.done.tap(this.constructor.name, stats => {
       latestHash = stats.hash;
 
-      streams.forEach(stream => {
-        stream.write({ event: 'check', data: latestHash });
+      wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+          sendCheck(client);
+        }
       });
     });
-
-    createServer((req, res) => {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-
-      const stream = new SseStream.default(req);
-      streams.push(stream);
-
-      pipeline(stream, res, () => {
-        const index = streams.indexOf(stream);
-
-        if (index !== -1) {
-          streams.splice(index, 1);
-        }
-
-        res.end();
-      });
-
-      if (latestHash) {
-        stream.writeMessage({ event: 'check', data: latestHash });
-      }
-    }).listen(this.port);
   }
 }

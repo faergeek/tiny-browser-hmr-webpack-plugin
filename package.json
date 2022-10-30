@@ -31,7 +31,11 @@
     "webpack": "^5.74.0"
   },
   "dependencies": {
-    "ssestream": "^1.1.0"
+    "ws": "^8.10.0"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.7",
+    "utf-8-validate": "^5.0.10"
   },
   "devDependencies": {
     "@faergeek/eslint-config": "^5.0.0",

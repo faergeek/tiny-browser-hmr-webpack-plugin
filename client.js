@@ -1,56 +1,82 @@
 /* eslint-env browser */
 /* globals __resourceQuery, __webpack_hash__ */
-function onceIdle(cb) {
+if (!import.meta.webpackHot) {
+  throw new Error(
+    'TinyBrowserHmrWebpackPlugin client entry is used without HotModuleReplacementPlugin. Either remove an entry or add a plugin'
+  );
+}
+
+const searchParams = new URLSearchParams(__resourceQuery);
+const port = searchParams.get('port');
+
+if (!port) {
+  throw new Error(
+    'TinyBrowserHmrWebpackPlugin client entry is used without TinyBrowserHmrWebpackPlugin. Either remove an entry or add a plugin'
+  );
+}
+
+connect();
+
+function connect() {
+  const ws = new WebSocket(`ws://${location.hostname}:${port}`);
+
+  ws.onmessage = async event => {
+    const { hash } = JSON.parse(event.data);
+
+    checkForUpdates(hash);
+  };
+
+  ws.onclose = () => {
+    setTimeout(() => {
+      connect();
+    }, 5000);
+  };
+}
+
+function waitForIdle() {
   if (import.meta.webpackHot.status() === 'idle') {
-    cb();
     return;
   }
 
-  function statusHandler(status) {
-    if (status === 'idle') {
-      cb();
+  return new Promise((resolve, reject) => {
+    function statusHandler(status) {
+      switch (status) {
+        case 'idle':
+          resolve();
+          break;
+        case 'abort':
+        case 'fail':
+          reject(new Error(`HMR status: "${status}"`));
+          break;
+        default:
+          return;
+      }
+
       import.meta.webpackHot.removeStatusHandler(statusHandler);
     }
-  }
 
-  import.meta.webpackHot.addStatusHandler(statusHandler);
+    import.meta.webpackHot.addStatusHandler(statusHandler);
+  });
 }
 
-if (import.meta.webpackHot) {
-  const searchParams = new URLSearchParams(__resourceQuery);
-  const port = searchParams.get('port');
-
-  if (!port) {
-    throw new Error(
-      'TinyBrowserHmrWebpackPlugin client entry is used without a plugin. Either remove an entry or add a plugin'
-    );
+async function checkForUpdates(hash) {
+  if (hash === __webpack_hash__) {
+    return;
   }
 
-  let lastHash = __webpack_hash__;
+  try {
+    await waitForIdle();
+    const updatedModules = await import.meta.webpackHot.check(true);
 
-  new EventSource(`http://${location.hostname}:${port}`).addEventListener(
-    'check',
-    event => {
-      const newHash = event.data;
-
-      if (newHash !== lastHash) {
-        onceIdle(() => {
-          import.meta.webpackHot
-            .check(true)
-            .then(updatedModules => {
-              if (!updatedModules) {
-                window.location.reload();
-                throw new Error('Cannot find an update');
-              }
-
-              lastHash = newHash;
-            })
-            .catch(err => {
-              location.reload();
-              throw err;
-            });
-        });
-      }
+    if (!updatedModules) {
+      throw new Error(
+        'Could not find an update, probably because of the server restart'
+      );
     }
-  );
+
+    checkForUpdates(hash);
+  } catch (err) {
+    location.reload();
+    throw err;
+  }
 }
