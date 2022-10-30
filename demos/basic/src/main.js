@@ -2,6 +2,8 @@
 import { render } from './render.js';
 
 import.meta.webpackHot.accept('./render.js');
+import.meta.webpackHot.accept();
+import.meta.webpackHot.dispose(() => location.reload());
 
 let counter = 0;
 

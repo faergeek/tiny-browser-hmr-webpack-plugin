@@ -2,11 +2,13 @@
 import { render } from './render.js';
 
 import.meta.webpackHot.accept('./render.js');
+import.meta.webpackHot.accept();
+import.meta.webpackHot.dispose(() => location.reload());
 
 let counter = 0;
 
 const heading = document.createElement('h1');
-heading.textContent = 'Contacts';
+heading.textContent = 'About';
 document.body.appendChild(heading);
 
 const input = document.createElement('input');

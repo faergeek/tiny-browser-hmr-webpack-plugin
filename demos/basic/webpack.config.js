@@ -5,24 +5,32 @@ import webpack from 'webpack';
 
 import { TinyBrowserHmrWebpackPlugin } from '../../plugin.js';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
 
 export default {
   context: __dirname,
   mode: 'development',
-  entry: ['../../client', '.'],
+  entry: {
+    main: ['../../client', './src/main'],
+    about: ['../../client', './src/about'],
+  },
   stats: 'errors-warnings',
   devtool: 'cheap-module-source-map',
   output: {
-    chunkFilename: '[name].js',
     filename: '[name].js',
     path: path.join(__dirname, 'build'),
-    publicPath: '/',
   },
   plugins: [
-    new webpack.ProgressPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new TinyBrowserHmrWebpackPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'about.html',
+      chunks: ['about'],
+    }),
   ],
 };

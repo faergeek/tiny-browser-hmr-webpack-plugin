@@ -5,7 +5,8 @@ import WebSocket, { WebSocketServer } from 'ws';
 const require = createRequire(import.meta.url);
 
 export class TinyBrowserHmrWebpackPlugin {
-  constructor({ port = 8000 } = {}) {
+  constructor({ hostname, port = 8000 } = {}) {
+    this.hostname = hostname;
     this.port = port;
   }
 
@@ -31,6 +32,11 @@ export class TinyBrowserHmrWebpackPlugin {
           const [pathname, search] = entryPath.split('?');
 
           const searchParams = new URLSearchParams(search);
+
+          if (this.hostname) {
+            searchParams.set('hostname', this.hostname);
+          }
+
           searchParams.set('port', this.port);
 
           entryValue.import[clientIndex] = `${pathname}?${searchParams}`;

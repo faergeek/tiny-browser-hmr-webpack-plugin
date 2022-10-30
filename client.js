@@ -7,6 +7,7 @@ if (!import.meta.webpackHot) {
 }
 
 const searchParams = new URLSearchParams(__resourceQuery);
+const hostname = searchParams.get('hostname');
 const port = searchParams.get('port');
 
 if (!port) {
@@ -18,7 +19,7 @@ if (!port) {
 connect();
 
 function connect() {
-  const ws = new WebSocket(`ws://${location.hostname}:${port}`);
+  const ws = new WebSocket(`ws://${hostname || location.hostname}:${port}`);
 
   ws.onmessage = async event => {
     const { hash } = JSON.parse(event.data);
@@ -64,19 +65,14 @@ async function checkForUpdates(hash) {
     return;
   }
 
-  try {
-    await waitForIdle();
-    const updatedModules = await import.meta.webpackHot.check(true);
+  await waitForIdle();
+  const updatedModules = await import.meta.webpackHot.check(true);
 
-    if (!updatedModules) {
-      throw new Error(
-        'Could not find an update, probably because of the server restart'
-      );
-    }
-
-    checkForUpdates(hash);
-  } catch (err) {
-    location.reload();
-    throw err;
+  if (!updatedModules) {
+    throw new Error(
+      'Could not find an update, probably because of the server restart'
+    );
   }
+
+  checkForUpdates(hash);
 }
