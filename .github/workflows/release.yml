@@ -14,13 +14,7 @@ jobs:
           cache: yarn
           node-version-file: .nvmrc
       - run: yarn --frozen-lockfile
-      - uses: cycjimmy/semantic-release-action@v2
-        with:
-          semantic_version: 17
-          branches: |
-            [
-              'master'
-            ]
+      - run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
