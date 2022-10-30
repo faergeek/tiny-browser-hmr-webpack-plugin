@@ -12,16 +12,16 @@ export class TinyBrowserHmrWebpackPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.entryOption.tap(this.constructor.name, (_context, entry) => {
+    compiler.hooks.entryOption.tap(this.constructor.name, (context, entry) => {
       let foundClientEntry = false;
 
       Object.values(entry).forEach(entryValue => {
         const clientIndex = entryValue.import.findIndex(resourcePath => {
           try {
-            return (
-              require.resolve(resourcePath.split('?')[0]) ===
-              require.resolve('./client')
-            );
+            const pathname = resourcePath.split('?')[0];
+            const absPath = require.resolve(pathname, { paths: [context] });
+
+            return absPath === require.resolve('./client');
           } catch {
             return false;
           }
