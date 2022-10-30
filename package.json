@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "@faergeek/make-webpack-config",
+  "name": "@faergeek/tiny-browser-hmr-webpack-plugin",
   "version": "0.0.0-semantically-released",
-  "repository": "git@github.com:faergeek/make-webpack-config.git",
+  "repository": "git@github.com:faergeek/tiny-browser-hmr-webpack-plugin.git",
   "author": "Sergey Slipchenko <me@faergeek.online>",
   "license": "MIT",
   "module": "plugin.js",
