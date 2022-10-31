@@ -7,14 +7,9 @@
   "license": "MIT",
   "module": "plugin.js",
   "exports": {
-    ".": {
-      "import": "./plugin.js",
-      "require": null
-    },
-    "./client": {
-      "import": "./client.js",
-      "require": null
-    }
+    ".": "./plugin.js",
+    "./client": "./client.js",
+    "./client?*": "./client.js?*"
   },
   "files": [
     "client.js",
