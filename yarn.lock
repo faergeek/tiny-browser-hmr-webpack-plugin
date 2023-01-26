@@ -5717,9 +5717,9 @@ url-join@^4.0.0:
   integrity sha512-jk1+QP6ZJqyOiuEI9AEWQfju/nB2Pw466kbA0LEZljHwKeMgd9WrAEgEGxjPDD2+TNbbb37rTyhEfrCXfuKXnA==
 
 utf-8-validate@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/utf-8-validate/-/utf-8-validate-6.0.1.tgz#ca94aac987856c17c1b556b8b692323de98f521e"
-  integrity sha512-gAZEa1DMXeBiHEwxef81kLtZjBrC1hib7UWnsvMVtxY8oJGtDSXt9McWu2D6V/xgrjbfRBsS5UIGEUBg2SrAsg==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/utf-8-validate/-/utf-8-validate-6.0.2.tgz#2d80529963e4cc55ac5a1ca9dafdaa990d5ea16b"
+  integrity sha512-yd7PQEOW+EgecUzSD7XUXTyq/vREGXk7t7fzGfOvwOAr0Z64h5rfGrmkNk8+ddVmf/FrkjPPhVyYBa7fuSPVTg==
   dependencies:
     node-gyp-build "^4.3.0"
 
