@@ -2,7 +2,7 @@
 /* globals __resourceQuery, __webpack_hash__ */
 if (!import.meta.webpackHot) {
   throw new Error(
-    'TinyBrowserHmrWebpackPlugin client entry is used without HotModuleReplacementPlugin. Either remove an entry or add a plugin'
+    'TinyBrowserHmrWebpackPlugin client entry is used without HotModuleReplacementPlugin. Either remove an entry or add a plugin',
   );
 }
 
@@ -12,7 +12,7 @@ const port = searchParams.get('port');
 
 if (!port) {
   throw new Error(
-    'TinyBrowserHmrWebpackPlugin client entry is used without TinyBrowserHmrWebpackPlugin. Either remove an entry or add a plugin'
+    'TinyBrowserHmrWebpackPlugin client entry is used without TinyBrowserHmrWebpackPlugin. Either remove an entry or add a plugin',
   );
 }
 
@@ -70,7 +70,7 @@ async function checkForUpdates(hash) {
 
   if (!updatedModules) {
     throw new Error(
-      'Could not find an update, probably because of the server restart'
+      'Could not find an update, probably because of the server restart',
     );
   }
 

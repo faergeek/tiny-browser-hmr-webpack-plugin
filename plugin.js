@@ -45,7 +45,7 @@ export class TinyBrowserHmrWebpackPlugin {
 
       if (!foundClientEntry) {
         throw new Error(
-          'TinyBrowserHmrWebpackPlugin is used without adding an entry. Either remove a plugin or add an entry'
+          'TinyBrowserHmrWebpackPlugin is used without adding an entry. Either remove a plugin or add an entry',
         );
       }
     });

@@ -6,7 +6,7 @@ export function startWebpackWatch(config) {
     const compiler = webpack(config);
 
     const watching = compiler.watch({}, err =>
-      err ? reject(err) : resolve(watching)
+      err ? reject(err) : resolve(watching),
     );
   });
 }
