@@ -18,7 +18,7 @@
   "scripts": {
     "cleanup": "rimraf demos/*/build",
     "format": "prettier --write .",
-    "format:check": "prettier --list-different .",
+    "format:check": "prettier --check .",
     "lint": "eslint --max-warnings 0 .",
     "demo": "node demos/cli.js"
   },
