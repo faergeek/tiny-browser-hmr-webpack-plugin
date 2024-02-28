@@ -34,8 +34,8 @@
     "utf-8-validate": "^6.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.0.0",
-    "@commitlint/config-conventional": "^18.0.0",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
     "@faergeek/eslint-config": "^6.0.0",
     "cpy": "^11.0.0",
     "eslint": "^8.0.0",
