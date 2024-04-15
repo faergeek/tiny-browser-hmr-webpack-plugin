@@ -438,8 +438,8 @@ packages:
     resolution: {integrity: sha512-1yN5m1IMNXthoBDUXFF97N1gHop04B3H8ws7wtOr8GgRyDO1gKALjwMHARNBoMBiB/2vEe/vxstrApcJZzQbnQ==}
     dev: true
 
-  /@octokit/plugin-paginate-rest@11.0.1(@octokit/core@6.1.2):
-    resolution: {integrity: sha512-6pPLXJOKXXhPkMlDU2pd6LCkiuAccTTJAsMlN7P/WbK3b1xbH/d90SGbdmz6yBadJJqM0xg80KRS5dYUHbo3oQ==}
+  /@octokit/plugin-paginate-rest@11.1.0(@octokit/core@6.1.2):
+    resolution: {integrity: sha512-VyWrvJUivEv2pKmHLBLtLX2vDbGfMiLrxSZE7vV2NAO1VsCWFIVVj7xodkOr7zOfsEkzTvF1Koi7Rsg6KvSc2A==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '>=6'
@@ -552,7 +552,7 @@ packages:
       semantic-release: '>=20.1.0'
     dependencies:
       '@octokit/core': 6.1.2
-      '@octokit/plugin-paginate-rest': 11.0.1(@octokit/core@6.1.2)
+      '@octokit/plugin-paginate-rest': 11.1.0(@octokit/core@6.1.2)
       '@octokit/plugin-retry': 7.1.0(@octokit/core@6.1.2)
       '@octokit/plugin-throttling': 9.1.0(@octokit/core@6.1.2)
       '@semantic-release/error': 4.0.0
@@ -585,7 +585,7 @@ packages:
       lodash-es: 4.17.21
       nerf-dart: 1.0.0
       normalize-url: 8.0.1
-      npm: 10.5.1
+      npm: 10.5.2
       rc: 1.2.8
       read-pkg: 9.0.1
       registry-auth-token: 5.0.2
@@ -634,12 +634,12 @@ packages:
   /@types/eslint-scope@3.7.7:
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
     dependencies:
-      '@types/eslint': 8.56.7
+      '@types/eslint': 8.56.9
       '@types/estree': 1.0.5
     dev: true
 
-  /@types/eslint@8.56.7:
-    resolution: {integrity: sha512-SjDvI/x3zsZnOkYZ3lCt9lOZWZLB2jIlNKz+LBgCtDurK0JZcwucxYHn1w2BJkD34dgX9Tjnak0txtq4WTggEA==}
+  /@types/eslint@8.56.9:
+    resolution: {integrity: sha512-W4W3KcqzjJ0sHg2vAq9vfml6OhsJ53TcUjUqfzzZf/EChUtwspszj/S0pzMxnfRcO55/iGq47dscXw71Fxc4Zg==}
     dependencies:
       '@types/estree': 1.0.5
       '@types/json-schema': 7.0.15
@@ -1222,8 +1222,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001606
-      electron-to-chromium: 1.4.729
+      caniuse-lite: 1.0.30001609
+      electron-to-chromium: 1.4.736
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -1268,8 +1268,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /caniuse-lite@1.0.30001606:
-    resolution: {integrity: sha512-LPbwnW4vfpJId225pwjZJOgX1m9sGfbw/RKJvw/t0QhYOOaTXHvkjVGFGPpvwEzufrjvTlsULnVTxdy4/6cqkg==}
+  /caniuse-lite@1.0.30001609:
+    resolution: {integrity: sha512-JFPQs34lHKx1B5t1EpQpWH4c+29zIyn/haGsbpfq3suuV9v56enjFt23zqijxGTMwy1p/4H2tjnQMY+p1WoAyA==}
     dev: true
 
   /chalk@2.4.2:
@@ -1740,8 +1740,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
-  /electron-to-chromium@1.4.729:
-    resolution: {integrity: sha512-bx7+5Saea/qu14kmPTDHQxkp2UnziG3iajUQu3BxFvCOnpAJdDbMV4rSl+EqFDkkpNNVUFlR1kDfpL59xfy1HA==}
+  /electron-to-chromium@1.4.736:
+    resolution: {integrity: sha512-Rer6wc3ynLelKNM4lOCg7/zPQj8tPOCB2hzD32PX9wd3hgRRi9MxEbmkFCokzcEhRVMiOVLjnL9ig9cefJ+6+Q==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -3430,8 +3430,8 @@ packages:
       path-key: 4.0.0
     dev: true
 
-  /npm@10.5.1:
-    resolution: {integrity: sha512-RozZuGuWbbhDM2sRhOSLIRb3DLyof6TREi0TW5b3xUEBropDhDqEHv0iAjA1zsIwXKgfIkR8GvQMd4oeKKg9eQ==}
+  /npm@10.5.2:
+    resolution: {integrity: sha512-cHVG7QEJwJdZyOrK0dKX5uf3R5Fd0E8AcmSES1jLtO52UT1enUKZ96Onw/xwq4CbrTZEnDuu2Vf9kCQh/Sd12w==}
     engines: {node: ^18.17.0 || >=20.5.0}
     hasBin: true
     dev: true
