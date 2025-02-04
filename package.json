@@ -26,6 +26,12 @@
   "peerDependencies": {
     "webpack": "^5.30.0"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bufferutil",
+      "utf-8-validate"
+    ]
+  },
   "dependencies": {
     "ws": "^8.10.0"
   },
