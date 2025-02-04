@@ -22,9 +22,15 @@
     "lint": "eslint --max-warnings 0 .",
     "demo": "node demos/cli.js"
   },
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@10.2.0",
   "peerDependencies": {
     "webpack": "^5.30.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bufferutil",
+      "utf-8-validate"
+    ]
   },
   "dependencies": {
     "ws": "^8.10.0"
