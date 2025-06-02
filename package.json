@@ -22,7 +22,7 @@
     "lint": "eslint --max-warnings 0 .",
     "demo": "node demos/cli.js"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "peerDependencies": {
     "webpack": "^5.30.0"
   },
