@@ -1,14 +1,15 @@
 import { base, browser, node } from '@faergeek/eslint-config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
-export default [
-  { ignores: ['demos/*/build/'] },
-  ...base,
-  ...browser.map(config => ({
-    ...config,
+export default defineConfig(
+  globalIgnores(['demos/*/build/']),
+  base,
+  {
     files: ['client.js', 'demos/*/src/**/*.js'],
-  })),
-  ...node.map(config => ({
-    ...config,
+    extends: [browser],
+  },
+  {
     files: ['demos/cli.js', 'demos/*/webpack.config.js', 'plugin.js'],
-  })),
-];
+    extends: [node],
+  },
+);
