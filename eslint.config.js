@@ -2,7 +2,7 @@ import { base, browser, node, typescript } from '@faergeek/eslint-config';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig(
-  globalIgnores(['demos/*/build/']),
+  globalIgnores(['demos/*/build', 'dist']),
   base,
   typescript,
   {
