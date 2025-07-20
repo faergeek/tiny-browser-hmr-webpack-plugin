@@ -1,9 +1,10 @@
-import { base, browser, node } from '@faergeek/eslint-config';
+import { base, browser, node, typescript } from '@faergeek/eslint-config';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig(
   globalIgnores(['demos/*/build/']),
   base,
+  typescript,
   {
     files: ['client.js', 'demos/*/src/**/*.js'],
     extends: [browser],

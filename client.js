@@ -34,12 +34,14 @@ function connect() {
   };
 }
 
+/** @returns {Promise<void> | undefined} */
 function waitForIdle() {
   if (import.meta.webpackHot.status() === 'idle') {
     return;
   }
 
   return new Promise((resolve, reject) => {
+    /** @param {webpack.HotUpdateStatus} status */
     function statusHandler(status) {
       switch (status) {
         case 'idle':
@@ -60,6 +62,7 @@ function waitForIdle() {
   });
 }
 
+/** @param {string} hash  */
 async function checkForUpdates(hash) {
   if (hash === __webpack_hash__) {
     return;
