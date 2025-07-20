@@ -1,2 +1,3 @@
 /demos/*/build
+/dist
 /node_modules
