@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@types/node':
-        specifier: ^24.0.15
-        version: 24.1.0
       '@types/ws':
         specifier: ^8.18.1
         version: 8.18.1
@@ -27,6 +24,9 @@ importers:
       '@faergeek/eslint-config':
         specifier: ^7.0.4
         version: 7.0.57(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)
+      '@types/node':
+        specifier: ^24.1.0
+        version: 24.1.0
       cpy:
         specifier: ^11.0.0
         version: 11.1.0
