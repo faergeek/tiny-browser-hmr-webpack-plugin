@@ -1,4 +1,3 @@
-/* eslint-env browser */
 /* globals __resourceQuery, __webpack_hash__ */
 if (!import.meta.webpackHot) {
   throw new Error(
@@ -6,9 +5,9 @@ if (!import.meta.webpackHot) {
   );
 }
 
-const searchParams = new URLSearchParams(__resourceQuery);
-const hostname = searchParams.get('hostname');
-const port = searchParams.get('port');
+const { hostname = location.hostname, port } = Object.fromEntries(
+  new URLSearchParams(__resourceQuery),
+);
 
 if (!port) {
   throw new Error(
@@ -16,66 +15,59 @@ if (!port) {
   );
 }
 
-connect();
+const WEBSOCKET_URL = `ws://${hostname}:${port}`;
+const LOG_PREFIX = '🔥 [HMR]';
 
-function connect() {
-  const ws = new WebSocket(`ws://${hostname || location.hostname}:${port}`);
+(function connect() {
+  const ws = new WebSocket(WEBSOCKET_URL);
+  ws.onclose = () => setTimeout(connect, 1000);
 
+  /** @param {MessageEvent<unknown>} event */
   ws.onmessage = async event => {
-    const { hash } = JSON.parse(event.data);
-
-    checkForUpdates(hash);
-  };
-
-  ws.onclose = () => {
-    setTimeout(() => {
-      connect();
-    }, 5000);
-  };
-}
-
-/** @returns {Promise<void> | undefined} */
-function waitForIdle() {
-  if (import.meta.webpackHot.status() === 'idle') {
-    return;
-  }
-
-  return new Promise((resolve, reject) => {
-    /** @param {webpack.HotUpdateStatus} status */
-    function statusHandler(status) {
-      switch (status) {
-        case 'idle':
-          resolve();
-          break;
-        case 'abort':
-        case 'fail':
-          reject(new Error(`HMR status: "${status}"`));
-          break;
-        default:
-          return;
+    try {
+      const hash = event.data;
+      if (typeof hash !== 'string') {
+        throw new Error(`Expected 'string', received: "${typeof hash}"`);
       }
 
-      import.meta.webpackHot.removeStatusHandler(statusHandler);
+      if (
+        hash === __webpack_hash__ ||
+        import.meta.webpackHot.status() !== 'idle'
+      ) {
+        return;
+      }
+
+      if (await import.meta.webpackHot.check(true)) return;
+
+      throw new Error(
+        'Could not find an update, probably because of the server restart',
+      );
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(
+        LOG_PREFIX,
+        // avoid showing useless stacktrace
+        err &&
+          typeof err === 'object' &&
+          'message' in err &&
+          typeof err.message === 'string'
+          ? err.message
+          : err,
+      );
+
+      if (
+        typeof location === 'undefined' ||
+        typeof location.reload !== 'function'
+      ) {
+        // eslint-disable-next-line no-console
+        console.error(
+          LOG_PREFIX,
+          'Cannot apply update. You need to do it manually',
+        );
+        return;
+      }
+
+      location.reload();
     }
-
-    import.meta.webpackHot.addStatusHandler(statusHandler);
-  });
-}
-
-/** @param {string} hash  */
-async function checkForUpdates(hash) {
-  if (hash === __webpack_hash__) {
-    return;
-  }
-
-  await waitForIdle();
-  const updatedModules = await import.meta.webpackHot.check(true);
-
-  if (!updatedModules) {
-    throw new Error(
-      'Could not find an update, probably because of the server restart',
-    );
-  }
-
-  checkForUpdates(hash);
-}
+  };
+})();
