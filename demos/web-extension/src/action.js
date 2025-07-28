@@ -4,8 +4,6 @@ import browser from 'webextension-polyfill';
 import { render } from './actionRender.js';
 
 import.meta.webpackHot.accept('./actionRender.js');
-import.meta.webpackHot.accept();
-import.meta.webpackHot.dispose(() => location.reload());
 
 function connect() {
   const port = browser.runtime.connect();

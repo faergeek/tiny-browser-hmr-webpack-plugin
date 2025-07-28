@@ -49,11 +49,7 @@ export class TinyBrowserHmrWebpackPlugin {
           const [pathname, search] = entryPath.split('?');
 
           const searchParams = new URLSearchParams(search);
-
-          if (this.hostname) {
-            searchParams.set('hostname', this.hostname);
-          }
-
+          if (this.hostname) searchParams.set('hostname', this.hostname);
           searchParams.set('port', String(this.port));
 
           entryValue.import[clientIndex] = `${pathname}?${searchParams}`;
@@ -73,25 +69,17 @@ export class TinyBrowserHmrWebpackPlugin {
 
     /** @param {WebSocket} client */
     function sendCheck(client) {
-      if (!latestHash) {
-        return;
-      }
-
-      client.send(JSON.stringify({ hash: latestHash }));
+      if (latestHash) client.send(latestHash);
     }
 
-    wss.on('connection', client => {
-      sendCheck(client);
-    });
+    wss.on('connection', sendCheck);
 
     compiler.hooks.done.tap(this.constructor.name, stats => {
       latestHash = stats.hash;
 
-      wss.clients.forEach(client => {
-        if (client.readyState === WebSocket.OPEN) {
-          sendCheck(client);
-        }
-      });
+      Array.from(wss.clients)
+        .filter(client => client.readyState === WebSocket.OPEN)
+        .forEach(sendCheck);
     });
   }
 }
