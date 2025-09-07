@@ -1,16 +1,16 @@
-import { base, browser, node, typescript } from '@faergeek/eslint-config';
+import { base, typescript } from '@faergeek/eslint-config';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import globals from 'globals';
 
 export default defineConfig(
   globalIgnores(['demos/*/build', 'dist']),
-  base,
-  typescript,
+  { extends: [base, typescript] },
   {
     files: ['client.js', 'demos/*/src/**/*.js'],
-    extends: [browser],
+    languageOptions: { globals: globals.browser },
   },
   {
     files: ['demos/cli.js', 'demos/*/webpack.config.js', 'plugin.js'],
-    extends: [node],
+    languageOptions: { globals: globals.nodeBuiltin },
   },
 );

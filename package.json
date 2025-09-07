@@ -51,11 +51,12 @@
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
-    "@faergeek/eslint-config": "^7.0.4",
+    "@faergeek/eslint-config": "^8.0.0",
     "@types/node": "^22.17.1",
     "cpy": "^12.0.0",
     "eslint": "^9.19.0",
     "express": "^5.0.0",
+    "globals": "^16.3.0",
     "html-webpack-plugin": "^5.5.0",
     "prettier": "^3.0.0",
     "rimraf": "^6.0.0",
