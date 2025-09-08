@@ -2,7 +2,10 @@
   "type": "module",
   "name": "@faergeek/tiny-browser-hmr-webpack-plugin",
   "version": "0.0.0-semantically-released",
-  "repository": "git@github.com:faergeek/tiny-browser-hmr-webpack-plugin.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/faergeek/tiny-browser-hmr-webpack-plugin.git"
+  },
   "author": "Sergei Slipchenko <faergeek@gmail.com>",
   "license": "MIT",
   "exports": {
