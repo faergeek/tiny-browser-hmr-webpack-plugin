@@ -5,7 +5,6 @@
   "repository": "git@github.com:faergeek/tiny-browser-hmr-webpack-plugin.git",
   "author": "Sergei Slipchenko <faergeek@gmail.com>",
   "license": "MIT",
-  "module": "plugin.js",
   "exports": {
     ".": {
       "types": "./dist/plugin.d.ts",
