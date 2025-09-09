@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
+## 1.2.3 (2025-09-09)
+
+### Fixes
+
+- update `@types/node` to `24.3.1`
+
 ## 1.2.2 (2025-09-08)
 
 ### Fixes
