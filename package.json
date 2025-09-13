@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@faergeek/tiny-browser-hmr-webpack-plugin",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/faergeek/tiny-browser-hmr-webpack-plugin.git"
