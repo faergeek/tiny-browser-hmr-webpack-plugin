@@ -13,7 +13,7 @@ importers:
         version: 8.18.1
       ws:
         specifier: ^8.10.0
-        version: 8.18.3(bufferutil@4.0.9)(utf-8-validate@6.0.6)
+        version: 8.18.3(bufferutil@4.1.0)(utf-8-validate@6.0.6)
     devDependencies:
       '@commitlint/cli':
         specifier: ^20.0.0
@@ -63,7 +63,7 @@ importers:
     optionalDependencies:
       bufferutil:
         specifier: ^4.0.7
-        version: 4.0.9
+        version: 4.1.0
       utf-8-validate:
         specifier: ^6.0.0
         version: 6.0.6
@@ -584,8 +584,8 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  bufferutil@4.0.9:
-    resolution: {integrity: sha512-WDtdLmJvAuNNPzByAYpRo2rF1Mmradw6gvWsQKf63476DDXmomT9zUiGypLcG4ibIM67vhAj8jJRdbmEws2Aqw==}
+  bufferutil@4.1.0:
+    resolution: {integrity: sha512-ZMANVnAixE6AWWnPzlW2KpUrxhm9woycYvPOo67jWHyFowASTEd9s+QN1EIMsSDtwhIxN4sWE1jotpuDUIgyIw==}
     engines: {node: '>=6.14.2'}
 
   bytes@3.1.2:
@@ -2921,7 +2921,7 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  bufferutil@4.0.9:
+  bufferutil@4.1.0:
     dependencies:
       node-gyp-build: 4.8.4
     optional: true
@@ -4724,9 +4724,9 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@6.0.6):
+  ws@8.18.3(bufferutil@4.1.0)(utf-8-validate@6.0.6):
     optionalDependencies:
-      bufferutil: 4.0.9
+      bufferutil: 4.1.0
       utf-8-validate: 6.0.6
 
   y18n@5.0.8: {}
