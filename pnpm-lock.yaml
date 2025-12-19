@@ -13,7 +13,7 @@ importers:
         version: 8.18.1
       ws:
         specifier: ^8.10.0
-        version: 8.18.3(bufferutil@4.0.9)(utf-8-validate@6.0.5)
+        version: 8.18.3(bufferutil@4.0.9)(utf-8-validate@6.0.6)
     devDependencies:
       '@commitlint/cli':
         specifier: ^20.0.0
@@ -66,7 +66,7 @@ importers:
         version: 4.0.9
       utf-8-validate:
         specifier: ^6.0.0
-        version: 6.0.5
+        version: 6.0.6
 
 packages:
 
@@ -2112,8 +2112,8 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
-  utf-8-validate@6.0.5:
-    resolution: {integrity: sha512-EYZR+OpIXp9Y1eG1iueg8KRsY8TuT8VNgnanZ0uA3STqhHQTLwbl+WX76/9X5OY12yQubymBpaBSmMPkSTQcKA==}
+  utf-8-validate@6.0.6:
+    resolution: {integrity: sha512-q3l3P9UtEEiAHcsgsqTgf9PPjctrDWoIXW3NpOHFdRDbLvu4DLIcxHangJ4RLrWkBcKjmcs/6NkerI8T/rE4LA==}
     engines: {node: '>=6.14.2'}
 
   utila@0.4.0:
@@ -4619,7 +4619,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  utf-8-validate@6.0.5:
+  utf-8-validate@6.0.6:
     dependencies:
       node-gyp-build: 4.8.4
     optional: true
@@ -4724,10 +4724,10 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@6.0.5):
+  ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@6.0.6):
     optionalDependencies:
       bufferutil: 4.0.9
-      utf-8-validate: 6.0.5
+      utf-8-validate: 6.0.6
 
   y18n@5.0.8: {}
 
