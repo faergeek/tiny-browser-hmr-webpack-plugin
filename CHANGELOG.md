@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
+## Unreleased
+
+### Fixes
+
+- point default export to `dist`
+
 ## 1.2.4 (2025-09-13)
 
 ### Fixes
