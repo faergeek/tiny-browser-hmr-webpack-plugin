@@ -18,8 +18,7 @@
   },
   "files": [
     "client.js",
-    "dist/plugin.d.ts",
-    "dist/plugin.d.ts.map",
+    "dist",
     "plugin.js"
   ],
   "scripts": {
@@ -28,8 +27,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint --max-warnings 0 .",
     "demo": "node demos/cli.js",
-    "typecheck": "tsc --noEmit",
-    "build": "tsc"
+    "build": "tsc --build"
   },
   "packageManager": "pnpm@10.28.2",
   "peerDependencies": {
