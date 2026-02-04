@@ -60,13 +60,6 @@ importers:
       webpack:
         specifier: ^5.74.0
         version: 5.105.0
-    optionalDependencies:
-      bufferutil:
-        specifier: ^4.0.7
-        version: 4.1.0
-      utf-8-validate:
-        specifier: ^6.0.0
-        version: 6.0.6
 
 packages:
 
