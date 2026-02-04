@@ -38,10 +38,6 @@
     "@types/ws": "^8.18.1",
     "ws": "^8.10.0"
   },
-  "optionalDependencies": {
-    "bufferutil": "^4.0.7",
-    "utf-8-validate": "^6.0.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
