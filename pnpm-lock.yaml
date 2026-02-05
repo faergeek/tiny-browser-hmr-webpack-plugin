@@ -29,7 +29,7 @@ importers:
         version: 24.10.10
       cpy:
         specifier: ^13.0.0
-        version: 13.1.0
+        version: 13.2.0
       eslint:
         specifier: ^9.19.0
         version: 9.39.2(jiti@2.6.1)
@@ -689,8 +689,8 @@ packages:
       typescript:
         optional: true
 
-  cpy@13.1.0:
-    resolution: {integrity: sha512-XFkWMaeQ1MliAltMaxr5QR25FBhiKCQZvW90Iriy3x5uoR82YA6oTgiIj08ai7ONvqNhsvSB37oAO928qnlSOQ==}
+  cpy@13.2.0:
+    resolution: {integrity: sha512-zTF1smuEo4MqYkx2/vzE2QftjgUJGaDNkIyEV9iZG7OfRhxZh6DlLEm+xHAcc0D2k8hL/Abseoep1crmG9so/w==}
     engines: {node: '>=20'}
 
   cross-spawn@7.0.6:
@@ -2962,7 +2962,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  cpy@13.1.0:
+  cpy@13.2.0:
     dependencies:
       copy-file: 11.1.0
       globby: 16.1.0
