@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
+## Unreleased
+
+### Fixes
+
+- resolve client entry relative to the package root
+
 ## 1.2.6 (2026-02-04)
 
 ### Fixes
