@@ -37,7 +37,10 @@ export class TinyBrowserHmrWebpackPlugin {
             const pathname = resourcePath.split('?')[0];
             const absPath = require.resolve(pathname, { paths: [context] });
 
-            return absPath === require.resolve('./client');
+            return (
+              absPath ===
+              require.resolve('@faergeek/tiny-browser-hmr-webpack-plugin/client')
+            );
           } catch {
             return false;
           }
