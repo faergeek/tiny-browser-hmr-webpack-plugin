@@ -29,7 +29,7 @@
     "demo": "node demos/cli.js",
     "build": "tsc --build"
   },
-  "packageManager": "pnpm@10.31.0",
+  "packageManager": "pnpm@10.32.0",
   "peerDependencies": {
     "@types/node": ">= 22.0.0",
     "webpack": "^5.30.0"
