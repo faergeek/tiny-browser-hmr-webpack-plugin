@@ -44,7 +44,7 @@ importers:
         version: 17.11.0
       html-webpack-plugin:
         specifier: ^5.5.0
-        version: 5.6.8(webpack@5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+        version: 5.6.8(webpack@5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       prettier:
         specifier: ^3.0.0
         version: 3.9.6
@@ -59,7 +59,7 @@ importers:
         version: 0.12.0
       webpack:
         specifier: ^5.74.0
-        version: 5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+        version: 5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
 packages:
 
@@ -474,11 +474,6 @@ packages:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
-
-  acorn@8.17.0:
-    resolution: {integrity: sha512-xRQbDb9BnwDafYNn6Vwl839DYVjqXYb1XVGtWAZ1kcDc6iwAL4hg3B1dZlRiuENFeO2H53gFG3in621AdERVAg==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
 
   acorn@8.18.0:
     resolution: {integrity: sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==}
@@ -1959,11 +1954,6 @@ packages:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
-  terser@5.49.0:
-    resolution: {integrity: sha512-SNiDnXyHSrxVcIOtVbULzcTmniUiwcV7Nwdyj1twVubeTmbjoa8p69KKDpfkdoOavuM4/GRm1+ykI8qqnavHoA==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   terser@5.51.2:
     resolution: {integrity: sha512-bWnjSNscmuI+GJze6ZupnHP8G/cTcsJF+bXCeQknk2SHQsgbNJnLrqiH9jZ2W4STPVXH2mDKKRX3iwPhc9Cn/Q==}
     engines: {node: '>=10'}
@@ -2076,8 +2066,8 @@ packages:
     resolution: {integrity: sha512-jyuiGJdtvY434z5bUZrjz67v76/ePNvFZTp9Mdz29IlH4+GPsgyGjiv0fKI+M7BdkU6ADjulUcKAd3tUK3WlEw==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.110.0:
-    resolution: {integrity: sha512-vzGjrgzXNYRs0MBVkdF288cJt0RIJMxlZy+3pLFo6KIeZI57sBGCgjBp+yNQWf5g9c1us34rjivM1sfNLijQYg==}
+  webpack@5.110.1:
+    resolution: {integrity: sha512-gInQB+jxXxgnZyvPwuzT5NGQmECDqeu85oxcrjinrYHqPoBex0hCAN2SFTJVyPVrK0Pq9E44VFP+e89fAc10/w==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -2707,11 +2697,9 @@ snapshots:
       mime-types: 3.0.2
       negotiator: 1.0.0
 
-  acorn-jsx@5.3.2(acorn@8.17.0):
+  acorn-jsx@5.3.2(acorn@8.18.0):
     dependencies:
-      acorn: 8.17.0
-
-  acorn@8.17.0: {}
+      acorn: 8.18.0
 
   acorn@8.18.0: {}
 
@@ -3298,8 +3286,8 @@ snapshots:
 
   espree@10.4.0:
     dependencies:
-      acorn: 8.17.0
-      acorn-jsx: 5.3.2(acorn@8.17.0)
+      acorn: 8.18.0
+      acorn-jsx: 5.3.2(acorn@8.18.0)
       eslint-visitor-keys: 4.2.1
 
   esquery@1.7.0:
@@ -3593,9 +3581,9 @@ snapshots:
       he: 1.2.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.49.0
+      terser: 5.51.2
 
-  html-webpack-plugin@5.6.8(webpack@5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  html-webpack-plugin@5.6.8(webpack@5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -3603,7 +3591,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
-      webpack: 5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
   htmlparser2@6.1.0:
     dependencies:
@@ -3889,13 +3877,13 @@ snapshots:
     dependencies:
       brace-expansion: 1.1.16
 
-  minimizer-webpack-plugin@5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  minimizer-webpack-plugin@5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       terser: 5.51.2
-      webpack: 5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
     optionalDependencies:
       clean-css: 5.3.3
       html-minifier-terser: 6.1.0
@@ -4392,13 +4380,6 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  terser@5.49.0:
-    dependencies:
-      '@jridgewell/source-map': 0.3.11
-      acorn: 8.18.0
-      commander: 2.20.3
-      source-map-support: 0.5.21
-
   terser@5.51.2:
     dependencies:
       '@jridgewell/source-map': 0.3.11
@@ -4518,7 +4499,7 @@ snapshots:
 
   webpack-sources@3.5.1: {}
 
-  webpack@5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0):
+  webpack@5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -4533,7 +4514,7 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.110.0(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+      minimizer-webpack-plugin: 5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.110.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.3
