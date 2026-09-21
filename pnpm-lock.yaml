@@ -202,7 +202,7 @@ importers:
         version: 17.12.0
       html-webpack-plugin:
         specifier: ^5.5.0
-        version: 5.6.8(webpack@5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+        version: 5.6.8(webpack@5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       prettier:
         specifier: ^3.0.0
         version: 3.9.8
@@ -217,7 +217,7 @@ importers:
         version: 0.12.0
       webpack:
         specifier: ^5.74.0
-        version: 5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+        version: 5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
 packages:
 
@@ -637,14 +637,6 @@ packages:
     resolution: {integrity: sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  ajv-formats@2.1.1:
-    resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
-    peerDependencies:
-      ajv: ^8.0.0
-    peerDependenciesMeta:
-      ajv:
-        optional: true
 
   ajv-formats@3.0.1:
     resolution: {integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ==}
@@ -1971,10 +1963,6 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  schema-utils@4.3.3:
-    resolution: {integrity: sha512-eflK8wEtyOE6+hsaRVPxvUKYCpRgzLqDTb8krvAsRIwOGlHoSgYLgBXoubGgLd2fT41/OUYdb48v4k4WWHQurA==}
-    engines: {node: '>= 10.13.0'}
-
   schema-utils@4.5.0:
     resolution: {integrity: sha512-zJlMCZ0cAR5p/Y4oVpRoqioDMJcGxaXRrQ/4rP4WyR84vc5z/DolXdbvXeDpTwbtocDFr2rhPqHPErDCUtz2kA==}
     engines: {node: '>= 10.13.0'}
@@ -2233,8 +2221,8 @@ packages:
     resolution: {integrity: sha512-jyuiGJdtvY434z5bUZrjz67v76/ePNvFZTp9Mdz29IlH4+GPsgyGjiv0fKI+M7BdkU6ADjulUcKAd3tUK3WlEw==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.111.0:
-    resolution: {integrity: sha512-A2R74kfE6b3eLKS91iZiol03Ebx7avmJJBOyiP+4LePW9NNeNJGQkKeSQos4dk6R4H0YAMYlv+aOrs1CyWT3eA==}
+  webpack@5.111.1:
+    resolution: {integrity: sha512-cNypaz0RP+S4cvQVi1M/3bRUkvNP0xZpL0TjFx+c6jg64VbxD+2weWDgY9UnjRI6dhZgtaj8DU76GGFcJ79xPQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -2869,10 +2857,6 @@ snapshots:
       acorn: 8.18.0
 
   acorn@8.18.0: {}
-
-  ajv-formats@2.1.1(ajv@8.20.0):
-    optionalDependencies:
-      ajv: 8.20.0
 
   ajv-formats@3.0.1(ajv@8.20.0):
     optionalDependencies:
@@ -3754,7 +3738,7 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.51.2
 
-  html-webpack-plugin@5.6.8(webpack@5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  html-webpack-plugin@5.6.8(webpack@5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -3762,7 +3746,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
-      webpack: 5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
   htmlparser2@6.1.0:
     dependencies:
@@ -4048,13 +4032,13 @@ snapshots:
     dependencies:
       brace-expansion: 1.1.16
 
-  minimizer-webpack-plugin@5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  minimizer-webpack-plugin@5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
-      schema-utils: 4.3.3
+      schema-utils: 4.5.0
       terser: 5.51.2
-      webpack: 5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
     optionalDependencies:
       clean-css: 5.3.3
       html-minifier-terser: 6.1.0
@@ -4348,13 +4332,6 @@ snapshots:
       is-regex: 1.2.1
 
   safer-buffer@2.1.2: {}
-
-  schema-utils@4.3.3:
-    dependencies:
-      '@types/json-schema': 7.0.15
-      ajv: 8.20.0
-      ajv-formats: 2.1.1(ajv@8.20.0)
-      ajv-keywords: 5.1.0(ajv@8.20.0)
 
   schema-utils@4.5.0:
     dependencies:
@@ -4675,7 +4652,7 @@ snapshots:
 
   webpack-sources@3.5.1: {}
 
-  webpack@5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0):
+  webpack@5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -4689,7 +4666,7 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.111.0(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+      minimizer-webpack-plugin: 5.8.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.111.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       schema-utils: 4.5.0
       tapable: 2.3.3
       watchpack: 2.5.2
