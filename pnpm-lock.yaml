@@ -202,7 +202,7 @@ importers:
         version: 17.13.0
       html-webpack-plugin:
         specifier: ^5.5.0
-        version: 5.6.8(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+        version: 5.6.8(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       prettier:
         specifier: ^3.0.0
         version: 3.9.10
@@ -217,7 +217,7 @@ importers:
         version: 0.12.0
       webpack:
         specifier: ^5.74.0
-        version: 5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+        version: 5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
 packages:
 
@@ -2227,8 +2227,8 @@ packages:
     resolution: {integrity: sha512-EIMmPVvNI0CYXyRPp34F2Qk7W37/BZVZIofS6LAUnrNjCVahS+hO4mxwFJDjQjODTGZDtVzLYoN2+1dYkhk9qA==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.112.1:
-    resolution: {integrity: sha512-DsEgOfaY5XrvTTEU7QvktlOpYEipgNUyXQY4rQO4KtFmr71IwjMoRWyv9rJNo6qwqctRzh9sO9VIwMgnWmiBVg==}
+  webpack@5.112.2:
+    resolution: {integrity: sha512-B2tp1LI9D8GVpPDqprdt12ukTkXXahj9MzqSWJq4faSPgOUM7CdZaGAB6HrL/8E6UwbBpdj4vzWDbKoFnVoU6g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -3733,7 +3733,7 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.51.2
 
-  html-webpack-plugin@5.6.8(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  html-webpack-plugin@5.6.8(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
@@ -3741,7 +3741,7 @@ snapshots:
       pretty-error: 4.0.0
       tapable: 2.3.3
     optionalDependencies:
-      webpack: 5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
   htmlparser2@6.1.0:
     dependencies:
@@ -4027,13 +4027,13 @@ snapshots:
     dependencies:
       brace-expansion: 1.1.16
 
-  minimizer-webpack-plugin@5.13.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  minimizer-webpack-plugin@5.13.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
-      schema-utils: 4.8.1(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+      schema-utils: 4.8.1(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       terser: 5.51.2
-      webpack: 5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)
     optionalDependencies:
       clean-css: 5.3.3
       html-minifier-terser: 6.1.0
@@ -4333,14 +4333,14 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  schema-utils@4.8.1(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
+  schema-utils@4.8.1(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)):
     dependencies:
       '@types/json-schema': 7.0.15
       ajv: 8.20.0
       ajv-formats: 3.0.1
       ajv-keywords: 5.1.0(ajv@8.20.0)
     optionalDependencies:
-      webpack: 5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0)
+      webpack: 5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)
 
   semver@6.3.1: {}
 
@@ -4646,7 +4646,7 @@ snapshots:
 
   webpack-sources@3.6.0: {}
 
-  webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0):
+  webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -4660,8 +4660,8 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.13.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
-      schema-utils: 4.8.1(webpack@5.112.1(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+      minimizer-webpack-plugin: 5.13.0(clean-css@5.3.3)(html-minifier-terser@6.1.0)(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0))
+      schema-utils: 4.8.1(webpack@5.112.2(clean-css@5.3.3)(html-minifier-terser@6.1.0))
       tapable: 2.3.3
       watchpack: 2.6.3
       webpack-sources: 3.6.0
